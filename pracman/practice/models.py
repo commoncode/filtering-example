@@ -15,7 +15,7 @@ class Practice(models.Model):
 
 class Doctor(AbstractUser):
 
-    practice = models.ForeignKey('practice.Practice', null=True, blank=True, related_name='doctors')
+    practice = models.ForeignKey('practice.Practice', null=True, blank=True, related_name='doctors', on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = 'Doctors'
@@ -24,7 +24,7 @@ class Doctor(AbstractUser):
 class Patient(models.Model):
 
     name = models.CharField(max_length=128)
-    practice = models.ForeignKey('practice.Practice')
+    practice = models.ForeignKey('practice.Practice', on_delete=models.PROTECT)
     create_at = models.DateTimeField(auto_now_add=True)
 
     objects = querysets.PatientQuerySet.as_manager()
@@ -35,8 +35,8 @@ class Patient(models.Model):
 
 class Appointment(models.Model):
 
-    doctor = models.ForeignKey('practice.Doctor')
-    patient = models.ForeignKey('practice.Patient')
+    doctor = models.ForeignKey('practice.Doctor', on_delete=models.PROTECT)
+    patient = models.ForeignKey('practice.Patient', on_delete=models.PROTECT)
     at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
 
