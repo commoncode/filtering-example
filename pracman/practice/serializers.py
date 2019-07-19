@@ -4,13 +4,6 @@ from . import models
 
 
 class AppointmentSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = models.Appointment
-        fields = (
-            'id',
-            'doctor',
-            'patient',
-            'at',
-            'created_at',
-        )
+        fields = ("id", "doctor", "patient", "at", "created_at")

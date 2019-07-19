@@ -6,9 +6,7 @@ class UserRelatedQuerySetMixin(object):
 
     def for_user(self, user):
         if not self.user_filter_key:
-            raise ImproperlyConfigured(
-                "A user_filter_key is required"
-            )
+            raise ImproperlyConfigured("A user_filter_key is required")
         kwargs = {self.user_filter_key: user}
         try:
             return self.filter(**kwargs)

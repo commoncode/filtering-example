@@ -12,9 +12,7 @@ class DoctorUserChangeForm(UserChangeForm):
 class DoctorUserAdmin(UserAdmin):
     form = DoctorUserChangeForm
 
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('practice',)}),
-    )
+    fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("practice",)}),)
 
 
 admin.site.register(models.Doctor, DoctorUserAdmin)

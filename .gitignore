@@ -5,6 +5,7 @@ __pycache__
 
 # Editor Config
 *.sublime-*
+.vscode
 
 # Environment Management
 .python-version
